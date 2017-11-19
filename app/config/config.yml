@@ -1,7 +1,6 @@
 imports:
     - { resource: parameters_common.yml }
     - { resource: parameters.yml }
-    - { resource: parameters_mock.yml }
     - { resource: security.yml }
     - { resource: services.yml }
 

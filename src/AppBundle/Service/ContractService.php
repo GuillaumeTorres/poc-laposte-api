@@ -41,10 +41,23 @@ class ContractService
     public function create($parameters)
     {
         $contract = new Contract();
-        foreach ($parameters as $parameter) {
-            $contract->${'set'.ucfirst($parameter)};
+        foreach ($parameters as $key => $parameter) {
+            $contract->{'set'.$this->toCamelCase($key)}($parameter);
         }
 
-        $this->contractDao->insert($contract);
+        return $this->contractDao->insert($contract);
+    }
+
+    private function toCamelCase($snakeCaseString)
+    {
+        $camelCase = preg_replace_callback(
+            '/_([^_])/',
+            function (array $m) {
+                return ucfirst($m[1]);
+            },
+            $snakeCaseString
+        );
+
+        return ucfirst($camelCase);
     }
 }

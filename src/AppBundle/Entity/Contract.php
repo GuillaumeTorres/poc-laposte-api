@@ -73,8 +73,12 @@ class Contract
         $this->AutorisationDiffusionCNIL = $AutorisationDiffusionCNIL;
     }
 
+    /**
+     * @return string
+     */
     public function getUri()
     {
-        return 'osef/ballec';
+        return '/test';
     }
+
 }

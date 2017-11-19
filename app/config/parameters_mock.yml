@@ -1,3 +1,2 @@
-# This file is auto-generated during the composer install
 parameters:
-    app_host: localhost
+    app_host: http://mock.dev

@@ -1,5 +1,6 @@
 imports:
     - { resource: config_prod.yml }
+    - { resource: parameters_mock.yml }
 
 framework:
     profiler: { only_exceptions: false }

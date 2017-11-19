@@ -38,27 +38,12 @@ class ContractDao
      * ContractDao constructor.
      *
      * @param Contract $contract
+     *
+     * @return object
      */
     public function insert(Contract $contract)
     {
-        $this->requestBuilder
-            ->build()
-            ->send();
-    }
-
-    public function search(){
-    }
-
-    public function show(){
-    }
-
-    public function edit(){
-    }
-
-    public function activate(){
-    }
-
-    public function terminate(){
+        return $this->requestBuilder->build($contract, 'post');
     }
 }
 
