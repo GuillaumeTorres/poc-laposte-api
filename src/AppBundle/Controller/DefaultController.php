@@ -1,61 +1,89 @@
 <?php
-
+/**
+ * Contract controller file
+ *
+ * PHP Version 5.6
+ *
+ * @category Controller
+ *
+ * @package  AppBundle\Controller
+ *
+ * @author   Guillaume <guillaume.torres@soprasteria.com>
+ */
 namespace AppBundle\Controller;
 
 use AppBundle\Service\ContractService;
 use Buzz\Browser;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
+/**
+ * Contract controller class
+ *
+ * @category Controller
+ */
 class DefaultController extends Controller
 {
 
     /**
      * @Route("/", name="homepage")
+     *
+     * @param Request $request
+     *
+     * @return Response
      */
     public function indexAction(Request $request)
     {
-        $headers['Content-Type'] = 'application/x-www-form-urlencoded';
-        $browser = new Browser();
-        $test = json_encode([
-            'permier' => 'blababla',
-            'autre' => 'yoyoyoyo',
-        ]);
-
-        $response = $browser->post('http://mock.dev/test', [], json_encode($test));
-
-        return new Response($response->getContent());
+        return new Response('home');
     }
 
     /**
-     * @Route("/contract", name="contract")
+     * @Route("/contract/create", name="contract_create")
+     *
+     * @Method("POST")
      *
      * @param Request         $request
      * @param ContractService $contractService
      *
      * @return Response
      */
-    public function contractAction(Request $request, ContractService $contractService)
+    public function createContractAction(Request $request, ContractService $contractService)
     {
         $parameters = $request->request->all();
-        $response = $contractService->create($parameters);
+        $jsonResponse = $contractService->create($parameters);
+        $response = json_decode($jsonResponse->getContent());
 
-        return new Response($response->getContent());
+        if (isset($response->Error)) {
+            return new JsonResponse($response->Error, 400);
+        }
+
+        return new JsonResponse(['success' => 'resource successfully created'], 201);
     }
 
     /**
-     * @Route("/test", name="test")
+     * @Route("/contract/create", name="contract_edit")
      *
-     * @param Request $request
+     * @Method("PUT")
+     *
+     * @param Request         $request
+     * @param ContractService $contractService
      *
      * @return Response
      */
-    public function testAction(Request $request)
+    public function editContractAction(Request $request, ContractService $contractService)
     {
-        $data = $request->request->all();
+        $parameters = $request->request->all();
+        $jsonResponse = $contractService->create($parameters, 'put');
+        $response = json_decode($jsonResponse->getContent());
 
-        return new Response(json_encode($data));
+        if (isset($response->Error)) {
+            return new JsonResponse($response->Error, 400);
+        }
+
+        return new JsonResponse(['success' => 'resource successfully edited'], 201);
     }
 }

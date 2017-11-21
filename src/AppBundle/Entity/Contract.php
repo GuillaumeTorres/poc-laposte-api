@@ -12,6 +12,8 @@
  */
 namespace AppBundle\Entity;
 
+use Symfony\Component\Validator\Constraints\Date;
+
 /**
  * Contract class
  *
@@ -19,58 +21,270 @@ namespace AppBundle\Entity;
  */
 class Contract
 {
-    private $EstDecede;
+    /** @var bool optional */
+    private $isDead;
 
-    private $FoyerEstComplet;
+    /** @var string */
+    private $homeIsFull;
 
-    private $AutorisationDiffusionCNIL;
+    /** @var bool */
+    private $broadcastingAuthorizationCnil;
+
+    /** @var Date */
+    private $startDate;
+
+    /** @var Date */
+    private $endDate;
+
+    /** @var string */
+    private $offer;
+
+    /** @var bool */
+    private $mobility;
+
+    /** @var string */
+    private $contractAddressState;
+
+    /** @var string optional */
+    private $comment;
+
+    /** @var bool */
+    private $completeJustifiedPieces;
+
+    /** @var bool optional */
+    private $activate;
+
+    /** @var string */
+    private $depositDate;
+
+    /** @var string optional */
+    private $issuingEntityCode;
+
+    /** @var string optional */
+    private $depositEntityCode;
 
     /**
-     * @return Boolean
+     * @return bool
      */
-    public function getEstDecede()
+    public function isDead()
     {
-        return $this->EstDecede;
+        return $this->isDead;
     }
 
     /**
-     * @param Boolean $EstDecede
+     * @param bool $isDead
      */
-    public function setEstDecede($EstDecede)
+    public function setIsDead($isDead)
     {
-        $this->EstDecede = $EstDecede;
+        $this->isDead = $isDead;
     }
 
     /**
-     * @return Boolean
+     * @return string
      */
-    public function getFoyerEstComplet()
+    public function getHomeIsFull()
     {
-        return $this->FoyerEstComplet;
+        return $this->homeIsFull;
     }
 
     /**
-     * @param Boolean $FoyerEstComplet
+     * @param string $homeIsFull
      */
-    public function setFoyerEstComplet($FoyerEstComplet)
+    public function setHomeIsFull($homeIsFull)
     {
-        $this->FoyerEstComplet = $FoyerEstComplet;
+        $this->homeIsFull = $homeIsFull;
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
-    public function getAutorisationDiffusionCNIL()
+    public function isBroadcastingAuthorizationCnil()
     {
-        return $this->AutorisationDiffusionCNIL;
+        return $this->broadcastingAuthorizationCnil;
     }
 
     /**
-     * @param mixed $AutorisationDiffusionCNIL
+     * @param bool $broadcastingAuthorizationCnil
      */
-    public function setAutorisationDiffusionCNIL($AutorisationDiffusionCNIL)
+    public function setBroadcastingAuthorizationCnil($broadcastingAuthorizationCnil)
     {
-        $this->AutorisationDiffusionCNIL = $AutorisationDiffusionCNIL;
+        $this->broadcastingAuthorizationCnil = $broadcastingAuthorizationCnil;
+    }
+
+    /**
+     * @return Date
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * @param Date $startDate
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+    }
+
+    /**
+     * @return Date
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
+    /**
+     * @param Date $endDate
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOffer()
+    {
+        return $this->offer;
+    }
+
+    /**
+     * @param string $offer
+     */
+    public function setOffer($offer)
+    {
+        $this->offer = $offer;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isMobility()
+    {
+        return $this->mobility;
+    }
+
+    /**
+     * @param bool $mobility
+     */
+    public function setMobility($mobility)
+    {
+        $this->mobility = $mobility;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContractAddressState()
+    {
+        return $this->contractAddressState;
+    }
+
+    /**
+     * @param string $contractAddressState
+     */
+    public function setContractAddressState($contractAddressState)
+    {
+        $this->contractAddressState = $contractAddressState;
+    }
+
+    /**
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * @param string $comment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCompleteJustifiedPieces()
+    {
+        return $this->completeJustifiedPieces;
+    }
+
+    /**
+     * @param bool $completeJustifiedPieces
+     */
+    public function setCompleteJustifiedPieces($completeJustifiedPieces)
+    {
+        $this->completeJustifiedPieces = $completeJustifiedPieces;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isActivate()
+    {
+        return $this->activate;
+    }
+
+    /**
+     * @param bool $activate
+     */
+    public function setActivate($activate)
+    {
+        $this->activate = $activate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDepositDate()
+    {
+        return $this->depositDate;
+    }
+
+    /**
+     * @param string $depositDate
+     */
+    public function setDepositDate($depositDate)
+    {
+        $this->depositDate = $depositDate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIssuingEntityCode()
+    {
+        return $this->issuingEntityCode;
+    }
+
+    /**
+     * @param string $issuingEntityCode
+     */
+    public function setIssuingEntityCode($issuingEntityCode)
+    {
+        $this->issuingEntityCode = $issuingEntityCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDepositEntityCode()
+    {
+        return $this->depositEntityCode;
+    }
+
+    /**
+     * @param string $depositEntityCode
+     */
+    public function setDepositEntityCode($depositEntityCode)
+    {
+        $this->depositEntityCode = $depositEntityCode;
     }
 
     /**
@@ -78,7 +292,7 @@ class Contract
      */
     public function getUri()
     {
-        return '/test';
+        return '/recif/resources/contrats/v1';
     }
 
 }

@@ -36,18 +36,28 @@ class ContractService
     /**
      * Create new contract
      *
-     * @param array $parameters
+     * @param array  $parameters
+     * @param string $method
+     *
+     * @return object
      */
-    public function create($parameters)
+    public function create($parameters, $method = 'post')
     {
         $contract = new Contract();
         foreach ($parameters as $key => $parameter) {
             $contract->{'set'.$this->toCamelCase($key)}($parameter);
         }
 
-        return $this->contractDao->insert($contract);
+        return $this->contractDao->insert($contract, $method);
     }
 
+    /**
+     * Convert snakeCase string to camlCase
+     *
+     * @param string $snakeCaseString
+     *
+     * @return string
+     */
     private function toCamelCase($snakeCaseString)
     {
         $camelCase = preg_replace_callback(

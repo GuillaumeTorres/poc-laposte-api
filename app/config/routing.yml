@@ -1,3 +1,8 @@
+mock:
+    resource: "@MockBundle/Controller/"
+    type:     annotation
+    prefix:   /mock
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation

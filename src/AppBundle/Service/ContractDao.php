@@ -35,15 +35,14 @@ class ContractDao
     }
 
     /**
-     * ContractDao constructor.
-     *
      * @param Contract $contract
+     * @param string   $method
      *
      * @return object
      */
-    public function insert(Contract $contract)
+    public function insert(Contract $contract, $method)
     {
-        return $this->requestBuilder->build($contract, 'post');
+        return $this->requestBuilder->build($contract, $method);
     }
 }
 

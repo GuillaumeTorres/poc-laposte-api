@@ -1,2 +1,2 @@
 parameters:
-    app_host: http://mock.dev
+    app_host: http://mock.dev/mock
